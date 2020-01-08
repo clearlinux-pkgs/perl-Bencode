@@ -4,13 +4,14 @@
 #
 Name     : perl-Bencode
 Version  : 1.501
-Release  : 1
+Release  : 2
 URL      : https://cpan.metacpan.org/authors/id/A/AR/ARISTOTLE/Bencode-1.501.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/A/AR/ARISTOTLE/Bencode-1.501.tar.gz
 Summary  : 'BitTorrent serialisation format'
 Group    : Development/Tools
 License  : Artistic-1.0 Artistic-1.0-Perl GPL-1.0
 Requires: perl-Bencode-license = %{version}-%{release}
+Requires: perl-Bencode-perl = %{version}-%{release}
 Requires: perl(Algorithm::Diff)
 Requires: perl(Exporter::Tidy)
 BuildRequires : buildreq-cpan
@@ -42,8 +43,18 @@ Group: Default
 license components for the perl-Bencode package.
 
 
+%package perl
+Summary: perl components for the perl-Bencode package.
+Group: Default
+Requires: perl-Bencode = %{version}-%{release}
+
+%description perl
+perl components for the perl-Bencode package.
+
+
 %prep
 %setup -q -n Bencode-1.501
+cd %{_builddir}/Bencode-1.501
 
 %build
 export http_proxy=http://127.0.0.1:9/
@@ -68,7 +79,7 @@ make TEST_VERBOSE=1 test
 %install
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/perl-Bencode
-cp LICENSE %{buildroot}/usr/share/package-licenses/perl-Bencode/LICENSE
+cp %{_builddir}/Bencode-1.501/LICENSE %{buildroot}/usr/share/package-licenses/perl-Bencode/b056d81f676f4d6c0717fd00cd0f91d86ec09f98
 if test -f Makefile.PL; then
 make pure_install PERL_INSTALL_ROOT=%{buildroot} INSTALLDIRS=vendor
 else
@@ -81,7 +92,6 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.28.2/Bencode.pm
 
 %files dev
 %defattr(-,root,root,-)
@@ -89,4 +99,8 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/perl-Bencode/LICENSE
+/usr/share/package-licenses/perl-Bencode/b056d81f676f4d6c0717fd00cd0f91d86ec09f98
+
+%files perl
+%defattr(-,root,root,-)
+/usr/lib/perl5/vendor_perl/5.30.1/Bencode.pm
