@@ -4,7 +4,7 @@
 #
 Name     : perl-Bencode
 Version  : 1.501
-Release  : 2
+Release  : 3
 URL      : https://cpan.metacpan.org/authors/id/A/AR/ARISTOTLE/Bencode-1.501.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/A/AR/ARISTOTLE/Bencode-1.501.tar.gz
 Summary  : 'BitTorrent serialisation format'
@@ -103,4 +103,4 @@ find %{buildroot} -type f -name '*.bs' -empty -exec rm -f {} ';'
 
 %files perl
 %defattr(-,root,root,-)
-/usr/lib/perl5/vendor_perl/5.30.1/Bencode.pm
+/usr/lib/perl5/vendor_perl/5.30.2/Bencode.pm
