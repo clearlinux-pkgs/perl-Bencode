@@ -4,7 +4,7 @@
 #
 Name     : perl-Bencode
 Version  : 1.502
-Release  : 12
+Release  : 13
 URL      : https://cpan.metacpan.org/authors/id/A/AR/ARISTOTLE/Bencode-1.502.tar.gz
 Source0  : https://cpan.metacpan.org/authors/id/A/AR/ARISTOTLE/Bencode-1.502.tar.gz
 Summary  : 'BitTorrent serialisation format'
